@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Page Replacement Simulator</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="shell">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="topbar-brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="6" height="6" rx="1.5"/>
+            <rect x="9" y="1" width="6" height="6" rx="1.5"/>
+            <rect x="1" y="9" width="6" height="6" rx="1.5"/>
+            <rect x="9" y="9" width="6" height="6" rx="1.5"/>
+          </svg>
+        </div>
+        <span class="brand-name">Page Replacement Simulator</span>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-label">Algorithm Visualization</div>
+      <h1>Page Replacement<br/><em>Algorithms</em></h1>
+      <p class="hero-sub">Simulate FIFO, LRU, and Optimal algorithms step-by-step. Observe frame states, page faults, and compare algorithm performance in a single view.</p>
+    </div>
+
+    <!-- INPUT -->
+    <div class="card input-card">
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label">Reference String</label>
+          <input id="refInput" type="text" value="7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2" placeholder="e.g. 7 0 1 2 0 3 0 4"/>
+          <span class="field-hint">Integers separated by spaces or commas</span>
+        </div>
+        <div class="field">
+          <label class="field-label">Number of Frames</label>
+          <input id="frameInput" type="number" min="1" max="8" value="3"/>
+          <span class="field-hint">Between 1 and 8</span>
+        </div>
+        <div class="field" style="justify-content:flex-end">
+          <button class="btn-primary" onclick="runAll()">
+            <svg class="btn-icon" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg"><polygon points="2,1 11,6 2,11"/></svg>
+            Run Simulation
+          </button>
+        </div>
+      </div>
+      <div id="errorBox" class="error-msg" style="display:none"></div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs-row" id="tabs" style="display:none">
+      <button class="tab t-fifo" id="tab-fifo" onclick="showTab('fifo')">FIFO</button>
+      <button class="tab t-lru"  id="tab-lru"  onclick="showTab('lru')">LRU</button>
+      <button class="tab t-opt"  id="tab-opt"  onclick="showTab('opt')">Optimal</button>
+    </div>
+
+    <!-- ALGORITHM SECTIONS -->
+    <div id="sec-fifo" class="algo-section"></div>
+    <div id="sec-lru"  class="algo-section"></div>
+    <div id="sec-opt"  class="algo-section"></div>
+    <div id="sec-compare"></div>
+
+    <!-- EMPTY STATE -->
+    <div id="emptyState" class="empty">
+      <div class="empty-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <h3>No simulation yet</h3>
+      <p>Enter a reference string and frame count above,<br/>then press <strong>Run Simulation</strong> to begin.</p>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <span>Page Replacement Simulator</span>
+      <span class="ft-right">v1.0</span>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="algorithms.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
